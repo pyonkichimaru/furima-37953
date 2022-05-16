@@ -41,21 +41,21 @@ Things you may want to cover:
 
 ### Association
 
-- has_manys :product
-- has_manys :buy
+- has_many :products
+- has_many :buys
 
 ## products テーブル
 
-| Column            | Type       | Options                        |
-| ----------------- | ---------- | ------------------------------ |
-| name              | string     | null: false                    |
-| price             | integer    | null: false                    |
-| category          | string     | null: false                    |
-| product_condition | string     | null: false                    |
-| delivery_charge   | string     | null: false                    |
-| area              | string     | null: false                    |
-| send              | string     | null: false                    |
-| user              | references | null: false, foreign_key: true |
+| Column               | Type       | Options                        |
+| -------------------- | ---------- | ------------------------------ |
+| name                 | string     | null: false                    |
+| price                | integer    | null: false                    |
+| category_id          | integer    | null: false                    |
+| product_condition_id | integer    | null: false                    |
+| delivery_charge_id   | integer    | null: false                    |
+| area_id              | integer    | null: false                    |
+| send_day_id          | integer    | null: false                    |
+| user                 | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -79,9 +79,12 @@ Things you may want to cover:
 
 | Column           | Type       | Options                        |
 | ---------------- | ---------- | ------------------------------ |
-| postal_code      | integer    | null: false                    |
+| post_code        | string     | null: false                    |
+| prefecture_id    | integer    | null: false                    |
+| city             | string     | null: false                    |
 | address          | string     | null: false                    |
-| telephone_number | integer    | null: false                    |
+| building_name    | string     |                                |
+| telephone_number | string     | null: false                    |
 | buy              | references | null: false, foreign_key: true |
 
 ### Association
