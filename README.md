@@ -49,7 +49,7 @@ Things you may want to cover:
 | Column               | Type       | Options                        |
 | -------------------- | ---------- | ------------------------------ |
 | name                 | string     | null: false                    |
-| explanation          | string     | null: false                    |
+| explanation          | text       | null: false                    |
 | price                | integer    | null: false                    |
 | category_id          | integer    | null: false                    |
 | product_condition_id | integer    | null: false                    |
