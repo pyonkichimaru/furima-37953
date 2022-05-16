@@ -27,65 +27,76 @@ Things you may want to cover:
 
 ## users テーブル
 
-| Column             | Type   | Options     |
-| ------------------ | ------ | ----------- |
-| nickname           | string | null: false |
-| email              | string | null: false |
-| password           | string | null: false |
+| Column          | Type   | Options     |
+| --------------- | ------ | ----------- |
+| nickname        | string | null: false |
+| email           | string | null: false |
+| password        | string | null: false |
+| first_name      | string | null: false |
+| last_name       | string | null: false |
+| first_name_kana | string | null: false |
+| last_name_kana  | string | null: false |
+| birthday        | date   | null: false |
+
 
 ### Association
 
-- has_many :products
-- has_many :comments
+- has_many :product
+- has_many :buy
+- has_many :comment
 
 ## products テーブル
 
-| Column       | Type    | Options     |
-| ------------ | ------- | ----------- |
-| name         | string  | null: false |
-| introduction | text    | null: false |
-| price        | integer | null: false |
+| Column       | Type       | Options                        |
+| ------------ | ---------- | ------------------------------ |
+| name         | string     | null: false                    |
+| introduction | text       | null: false                    |
+| price        | integer    | null: false                    |
+| user_id      | references | null: false, foreign_key: true |
 
 ### Association
 
-- belongs_to :users
-- belongs_to :buyers
-- has_many :comments
+- belongs_to :user
+- has_one :buy
+- has_many :comment
 
-## buyers テーブル
+## buys テーブル
 
-| Column     | Type   | Options     |
-| ---------- | ------ | ----------- |
-| first_name | string | null: false |
-| last_name  | string | null: false |
-| email      | string | null: false |
-| password   | string | null: false |
-| address    | string | null: false |
+| Column     | Type       | Options                        |
+| ---------- | ---------- | ------------------------------ |
+| user_id    | references | null: false, foreign_key: true |
+| product_id | references | null: false, foreign_key: true |
 
 ### Association
 
-- belongs_to :products
-- belongs_to :cards
+- belongs_to :user
+- belongs_to :product
+- has_one :address
 
-## cards テーブル
+## addresses テーブル
 
-| Column          | Type    | Options     |
-| --------------- | ------- | ----------- |
-| user            | string  | null: false |
-| card_id         | string  | null: false |
-| expiration_date | integer | null: false |
+| Column          | Type       | Options                        |
+| --------------- | ---------- | ------------------------------ |
+| address         | string     | null: false                    |
+| telephonenumber | integer    | null: false                    |
+| buy_id          | references | null: false, foreign_key: true |
 
 ### Association
 
-- belongs_to :buyers
+- belongs_to :buy
+
 
 ## comments テーブル
 
-| Column          | Type  | Options     |
-| --------------- | ----- | ----------- |
-| comment         | text  | null: false |
+| Column     | Type       | Options                        |
+| ---------- | ---------- | ------------------------------ |
+| comment    | string     | null: false                    |
+| users_id   | references | null: false, foreign_key: true |
+| product_id | references | null: false, foreign_key: true |
 
 ### Association
 
-- belongs_to :users
-- belongs_to :products
+- belongs_to :user
+- belongs_to :product
+
+
