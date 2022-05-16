@@ -22,3 +22,70 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+# テーブル設計
+
+## users テーブル
+
+| Column             | Type   | Options     |
+| ------------------ | ------ | ----------- |
+| nickname           | string | null: false |
+| email              | string | null: false |
+| password           | string | null: false |
+
+### Association
+
+- has_many :products
+- has_many :comments
+
+## products テーブル
+
+| Column       | Type    | Options     |
+| ------------ | ------- | ----------- |
+| name         | string  | null: false |
+| introduction | text    | null: false |
+| price        | integer | null: false |
+
+### Association
+
+- belongs_to :users
+- belongs_to :buyers
+- has_many :comments
+
+## buyers テーブル
+
+| Column     | Type   | Options     |
+| ---------- | ------ | ----------- |
+| first_name | string | null: false |
+| last_name  | string | null: false |
+| email      | string | null: false |
+| password   | string | null: false |
+| address    | string | null: false |
+
+### Association
+
+- belongs_to :products
+- belongs_to :cards
+
+## cards テーブル
+
+| Column          | Type    | Options     |
+| --------------- | ------- | ----------- |
+| user            | string  | null: false |
+| card_id         | string  | null: false |
+| expiration_date | integer | null: false |
+
+### Association
+
+- belongs_to :buyers
+
+## comments テーブル
+
+| Column          | Type  | Options     |
+| --------------- | ----- | ----------- |
+| comment         | text  | null: false |
+
+### Association
+
+- belongs_to :users
+- belongs_to :products
