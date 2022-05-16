@@ -27,31 +27,35 @@ Things you may want to cover:
 
 ## users テーブル
 
-| Column          | Type   | Options     |
-| --------------- | ------ | ----------- |
-| nickname        | string | null: false |
-| email           | string | null: false |
-| password        | string | null: false |
-| first_name      | string | null: false |
-| last_name       | string | null: false |
-| first_name_kana | string | null: false |
-| last_name_kana  | string | null: false |
-| birthday        | date   | null: false |
+| Column             | Type   | Options                  |
+| ------------------ | ------ | ------------------------ |
+| nickname           | string | null: false              |
+| email              | string | null: false,unique: true |
+| encrypted_password | string | null: false              |
+| first_name         | string | null: false              |
+| last_name          | string | null: false              |
+| first_name_kana    | string | null: false              |
+| last_name_kana     | string | null: false              |
+| birthday           | date   | null: false              |
 
 
 ### Association
 
-- has_many :product
-- has_many :buy
+- has_manys :product
+- has_manys :buy
 
 ## products テーブル
 
-| Column       | Type       | Options                        |
-| ------------ | ---------- | ------------------------------ |
-| name         | string     | null: false                    |
-| introduction | text       | null: false                    |
-| price        | integer    | null: false                    |
-| user_id      | references | null: false, foreign_key: true |
+| Column            | Type       | Options                        |
+| ----------------- | ---------- | ------------------------------ |
+| name              | string     | null: false                    |
+| price             | integer    | null: false                    |
+| category          | string     | null: false                    |
+| product_condition | string     | null: false                    |
+| delivery_charge   | string     | null: false                    |
+| area              | string     | null: false                    |
+| send              | string     | null: false                    |
+| user              | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -60,10 +64,10 @@ Things you may want to cover:
 
 ## buys テーブル
 
-| Column     | Type       | Options                        |
-| ---------- | ---------- | ------------------------------ |
-| user_id    | references | null: false, foreign_key: true |
-| product_id | references | null: false, foreign_key: true |
+| Column  | Type       | Options                        |
+| ------- | ---------- | ------------------------------ |
+| user    | references | null: false, foreign_key: true |
+| product | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -73,11 +77,12 @@ Things you may want to cover:
 
 ## addresses テーブル
 
-| Column          | Type       | Options                        |
-| --------------- | ---------- | ------------------------------ |
-| address         | string     | null: false                    |
-| telephonenumber | integer    | null: false                    |
-| buy_id          | references | null: false, foreign_key: true |
+| Column           | Type       | Options                        |
+| ---------------- | ---------- | ------------------------------ |
+| postal_code      | integer    | null: false                    |
+| address          | string     | null: false                    |
+| telephone_number | integer    | null: false                    |
+| buy              | references | null: false, foreign_key: true |
 
 ### Association
 
