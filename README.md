@@ -36,7 +36,7 @@ Things you may want to cover:
 | last_name          | string | null: false              |
 | first_name_kana    | string | null: false              |
 | last_name_kana     | string | null: false              |
-| birthday           | date   | null: false              |
+| birth_date         | date   | null: false              |
 
 
 ### Association
@@ -94,5 +94,15 @@ Things you may want to cover:
 
 
 
+カラムを追加したい時
+1、rails g migration AddNicknameToUsers nickname:stringをしてmigrate
+2、rails db:rollback を行いマイグレーションファイルを修正
+（3、マイグレーションファイルの修正を行い、rails db:migrate:reset）
 
+3のデメリット
+・データが全て消える為、本番環境でできない
 
+rails db:migrate:reset は以下の3つを行うコマンド
+1、rails db:drop
+2、rails db:create
+3、rails db:migrate
