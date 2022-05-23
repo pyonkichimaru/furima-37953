@@ -14,10 +14,9 @@ class Product < ApplicationRecord
 
 
 
-  validates :title, :text, presence: true
   validates :area_id, numericality:              { other_than: 0 , message: "can't be blank"} 
   validates :category_id, numericality:          { other_than: 0 , message: "can't be blank"} 
-  validates :delivery_id, numericality:          { other_than: 0 , message: "can't be blank"} 
+  validates :delivery_charge_id, numericality:   { other_than: 0 , message: "can't be blank"} 
   validates :product_condition_id, numericality: { other_than: 0 , message: "can't be blank"} 
-  validates :send_id, numericality:              { other_than: 0 , message: "can't be blank"} 
+  validates :send_day_id, numericality:          { other_than: 0 , message: "can't be blank"} 
 end

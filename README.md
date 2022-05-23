@@ -48,7 +48,7 @@ Things you may want to cover:
 
 | Column               | Type       | Options                        |
 | -------------------- | ---------- | ------------------------------ |
-| products_name        | string     | null: false                    |
+| product_name         | string     | null: false                    |
 | explanation          | text       | null: false                    |
 | price                | integer    | null: false                    |
 | category_id          | integer    | null: false                    |
@@ -57,6 +57,7 @@ Things you may want to cover:
 | area_id              | integer    | null: false                    |
 | send_day_id          | integer    | null: false                    |
 | user                 | references | null: false, foreign_key: true |
+| image_id             | text       | null: false                    |
 
 ### Association
 
