@@ -12,6 +12,8 @@ class Product < ApplicationRecord
   belongs_to_active_hash :send_day
   belongs_to_active_hash :area
 
+  validates :product_name,     presence: true
+  validates :explanation,        presence: true
   validates :image,      presence: true
   validates :price,      presence: true, inclusion: { in: 300..9_999_999 }, format: { with: /\A[0-9]+\z/ }
 
