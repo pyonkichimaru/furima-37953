@@ -59,19 +59,19 @@ RSpec.describe Product, type: :model do
       end 
 
       it '価格に半角数字以外が含まれている場合は出品できない' do
-        @product.price = '1'
+        @product.price = '１'
         @product.valid?
-        expect(@product.errors.full_messages).to include "Price is not included in the list"
+        expect(@product.errors.full_messages).to include "Price is invalid"
       end 
       it '価格が300円未満では出品できない' do
         @product.price = '299'
         @product.valid?
-        expect(@product.errors.full_messages).to include "Price is not included in the list"
+        expect(@product.errors.full_messages).to include "Price is invalid"
       end 
       it '価格が9_999_999円を超えると出品できない' do
         @product.price = '10_000_000'
         @product.valid?
-        expect(@product.errors.full_messages).to include "Price is not included in the list"  
+        expect(@product.errors.full_messages).to include "Price is invalid"  
       end 
       it 'userが紐付いていないと保存できない' do
         @product.user = nil
