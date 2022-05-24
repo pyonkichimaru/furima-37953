@@ -1,10 +1,10 @@
 class ProductsController < ApplicationController
-  before_action :authenticate_user!   #ログインしていないユーザーをログインページの画面に促す
+  before_action :authenticate_user!, only:[:new]  #ログインしていないユーザーをログインページの画面に促す
 
 
 
   def index
-    @products=Product.all
+    #@products=Product.all
   end
 
   def new
@@ -26,7 +26,7 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:image, :product_name, :explanation, :price, :category_id, :product_condition_id, :delivery_charge_id, :area_id, :send_day_id)
+    params.require(:product).permit(:image, :product_name, :explanation, :price, :category_id, :product_condition_id, :delivery_charge_id, :area_id, :send_day_id).merge(user_id: current_user.id)
   end
 
 

@@ -6,13 +6,14 @@ class Product < ApplicationRecord
   has_one_attached :image
 
   extend ActiveHash::Associations::ActiveRecordExtensions
-  belongs_to :category
-  belongs_to :delivery_charge
-  belongs_to :product_condition
-  belongs_to :send_day
+  belongs_to_active_hash :category
+  belongs_to_active_hash :delivery_charge
+  belongs_to_active_hash :product_condition
+  belongs_to_active_hash :send_day
   belongs_to_active_hash :area
 
-
+  validates :image,      presence: true
+  validates :price,      presence: true, inclusion: { in: 300..9_999_999 }, format: { with: /\A[0-9]+\z/ }
 
   validates :area_id, numericality:              { other_than: 0 , message: "can't be blank"} 
   validates :category_id, numericality:          { other_than: 0 , message: "can't be blank"} 
