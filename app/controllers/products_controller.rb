@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :authenticate_user!, only:[:new]  #ログインしていないユーザーをログインページの画面に促す
+  before_action :authenticate_user!, only:[:new]  
 
 
 
