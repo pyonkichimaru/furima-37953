@@ -48,7 +48,7 @@ Things you may want to cover:
 
 | Column               | Type       | Options                        |
 | -------------------- | ---------- | ------------------------------ |
-| name                 | string     | null: false                    |
+| product_name         | string     | null: false                    |
 | explanation          | text       | null: false                    |
 | price                | integer    | null: false                    |
 | category_id          | integer    | null: false                    |
@@ -57,6 +57,7 @@ Things you may want to cover:
 | area_id              | integer    | null: false                    |
 | send_day_id          | integer    | null: false                    |
 | user                 | references | null: false, foreign_key: true |
+| image_id             | text       | null: false                    |
 
 ### Association
 
@@ -106,3 +107,11 @@ rails db:migrate:reset は以下の3つを行うコマンド
 1、rails db:drop
 2、rails db:create
 3、rails db:migrate
+
+
+●名称はなんでもOKですが、統一させることが大切です
+テーブル名に合わせて名前を統一させることがおすすめです
+productに合わせる
+1、modelの書き替えたところを元にもどす
+2、furimasコントローラーを削除してproductsコントローラーの作成
+3、ビューitemフォルダの名称を、productsに変更
