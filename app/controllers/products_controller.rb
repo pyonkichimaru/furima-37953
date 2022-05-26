@@ -21,8 +21,8 @@ class ProductsController < ApplicationController
     end
   end
 
-  def show
-
+  def show 
+    @users = User.all
   end
 
   def edit
