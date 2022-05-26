@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   before_action :authenticate_user!, only:[:new]  
-  before_action :set_product, only: [:edit, :show]
+  before_action :set_product, only: [:show]
 
 
 
