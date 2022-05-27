@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   before_action :authenticate_user!, only:[:new]  
-  before_action :set_product, only: [:show]
+  before_action :set_product, only: [:show, :edit]
 
 
 
@@ -25,6 +25,19 @@ class ProductsController < ApplicationController
     
   end
 
+  def edit
+
+  end
+
+  def update
+    @product = Product.find(params[:id])
+    @product.update(product_params)
+    if @product.save
+      redirect_to product_path
+    else
+      render 'edit'
+    end
+  end
  
 
 
