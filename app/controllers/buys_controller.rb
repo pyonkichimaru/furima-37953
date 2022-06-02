@@ -1,7 +1,7 @@
 class BuysController < ApplicationController
   before_action :authenticate_user!, only: [:index, :create]
   before_action :set_product, only: [:index, :create]
-  before_action :move_to_index, only: [:index, :create]
+  #before_action :move_to_index, only: [:create]
 
   def index
     @buy_address = BuyAddress.new
@@ -34,6 +34,5 @@ class BuysController < ApplicationController
 
   def move_to_index
     redirect_to root_path unless current_user == @product.user 
-    end
   end
 end
