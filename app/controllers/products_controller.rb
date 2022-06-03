@@ -7,6 +7,7 @@ class ProductsController < ApplicationController
 
   def index
     @products=Product.order(created_at: :desc)
+    
   end
 
   def new
@@ -27,6 +28,9 @@ class ProductsController < ApplicationController
   end
 
   def edit
+    if  @product.buy.present?
+       redirect_to root_path
+    end
 
   end
 
