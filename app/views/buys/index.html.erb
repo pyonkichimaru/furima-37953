@@ -14,13 +14,13 @@
         </h2>
         <div class='buy-item-price'>
           <p class='item-price-text'>¥<%= @product.price %></p>
-          <p class='item-price-sub-text'><%= '配送料負担' %></p>
+          <p class='item-price-sub-text'><%= @product.delivery_charge.name %></p>
         </div>
       </div>
     </div>
     <%# /購入内容の表示 %>
 
-    <%# 支払額の表示 %>
+
     <div class='item-payment'>
       <h1 class='item-payment-title'>
         支払金額
@@ -29,7 +29,6 @@
         ¥<%= @product.price %>
       </p>
     </div>
-    <%# /支払額の表示 %>
 
     <%= form_with  model: @buy_address, url: product_buys_path, id: 'charge-form', class: 'transaction-form-wrap',local: true do |f| %>
       <%= render 'shared/error_messages', model: f.object %>

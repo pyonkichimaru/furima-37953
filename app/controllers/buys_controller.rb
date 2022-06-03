@@ -4,7 +4,7 @@ class BuysController < ApplicationController
 
   def index
     @buy_address = BuyAddress.new
-    if current_user == @product.user && @product.buy.present?
+    if current_user == @product.user || @product.buy.present?
        redirect_to root_path
     end   
   end
